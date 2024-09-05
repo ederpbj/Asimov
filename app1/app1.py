@@ -1,5 +1,5 @@
 import dash
-import dash import html, dcc
+from dash import html, dcc
 import plotly.express as px
 import pandas as pd
 
@@ -16,9 +16,13 @@ fig = px.bar(df, x="Fruit", y="Amount", color="City")
 
 #============= Layout
 
-app.layout = html.Div(
+app.layout = html.Div(id="div1",
     children=[
-        html.H1("Hello Dash")
+        html.H1("Hello Dash", id="h1"),
+        html.Div("Dash: Um framework web para python"),
+        dcc.Graph(figure=fig, id="graph"),
     ]
 )
 
+if __name__ == '__main__':
+    app.run_server(debug=True)
